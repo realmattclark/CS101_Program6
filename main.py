@@ -61,13 +61,30 @@ class Cart(Store):
             print('Cart is empty')
 
 def main():
-    
+    add = remove = True
     cart = Cart()
     store = Store()
     name = input('Which store would you like to use today?')
     location = input('Which location would you like to use?')
     cart.set_name_location(name, location)
     print(store.display())
+    cart.product_price({'Milk':2.5, 'Bread':1.98, 'Eggs':.70, 'Flour':1.18, 'Oil':4.00, 'Cheese':2.68})
+    cart.add_item()
+    cart.display()
+    while remove == True or add == True:
+        if input('\nDo you want to remove an item? (Y/N)\n/'.lower() == 'y'):
+            remove = True
+            cart.remove_item
+            cart.display()
+        else:
+            remove = False
+        
+        if input('\nDo you want to add another item to cart? (Y/N)\n'.lower() == 'y'):
+            add = True
+            cart.add_item()
+            cart.display()
+        else:
+            add = False
     
 if __name__ == '__main__':
     main()
