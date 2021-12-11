@@ -28,7 +28,7 @@ class Cart(Store):
                 self.items[self.item_name] += self.item_quantity
             else:
                 self.items[self.item_name] = self.item_quantity
-            if(self.product_price.get(self.item_name, '')!=''):
+            if str(self.product_price.get(self.item_name, '')!=''):
                 self.receipt += (self.product_price[self.item_name] * self.item_quantity)
 
         else:
