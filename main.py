@@ -7,11 +7,11 @@ class Store:
         self.location = location
     
     def display(self):
-        return 'Products as follows: \nMilk : $2.50 \nBread : $1.98 \nEggs : $.70 \nFlour : $1.18 \nOil : $4.00 \nCheese : $2.68'
+        return 'Products available: \nMilk : $2.50 \nBread : $1.98 \nEggs : $.70 \nFlour : $1.18 \nOil : $4.00 \nCheese : $2.68'
 
 class Cart(Store):
     def __init__(self):
-        self.items = {}
+        self.item = {}
         self.receipt = 0
         self.item_name = ''
         self.item_quantity = 0
@@ -23,6 +23,33 @@ class Cart(Store):
         self.item_name = input('Enter the name of the product : ')
         self.item_quantity = int(input('Enter the number of items'))
         print('User placed order from:', self.name, 'from', self.location, 'location.')
+        if(self.product_price.get(self.item_name, '')!=''):
+            if(self.item_name(self.item_name, '')!=''):
+                self.items[self.item_name] += self.item_quantity
+            else:
+                self.items[self.item_name] = self.item_quantity
+            if(self.product_price.get(self.item_name, '')!=''):
+                self.receipt += (self.product_price[self.item_name] * self.item_quantity)
+
+        else:
+            pass
+
+    def remove_item(self):
+        if (len(self.item_quantity)>0):
+            self.productname = input('Enter name of product to remove :\n')
+            self.item_quantity = int(input('Enter amount to remove : \n'))
+            print('User placed order from : ',self.name, 'at :', self.location)
+            if(self.items.get(self.item_name,'')!=''):
+                self.items[self.item_name] -= self.item_quantity
+                if(self.items[self.item_name] <= 0):
+                    del self.items[self.item_name]
+
+                if(self.product_price.get(self.item_name, '')!=''):
+                    self.receipt -= (self.product_price[self.item_name] * self.item_quantity)
+        else:
+            print('Cart is empty')
+            pass
+
 
     def display(self):
         if (len(self.items)>0):
@@ -34,7 +61,7 @@ class Cart(Store):
             print('Cart is empty')
 
 def main():
-    remove = add = True
+    
     cart = Cart()
     store = Store()
     name = input('Which store would you like to use today?')
@@ -42,3 +69,5 @@ def main():
     cart.set_name_location(name, location)
     print(store.display())
     
+if __name__ == '__main__':
+    main()
