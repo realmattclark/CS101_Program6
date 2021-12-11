@@ -1,3 +1,10 @@
+'''
+Program using methods, classes, inheritance and functions to create an online store with items and receipt
+1. Create classes for Store and Cart
+2. Define items and functions for adding/removing items from cart
+3. Create main program to create instances of Store and Cart classes
+'''
+
 class Store:
     def __init__(self):
         pass
